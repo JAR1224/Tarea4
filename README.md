@@ -7,7 +7,7 @@
 La modulacion BPSK para los bits presentados se realizo mediante el siguiente 'for loop':
 
 for k, b in enumerate(bits):
-  senal(k*p:(k+1)*p) = ((2*b)-1) * sinus
+senal(k*p:(k+1)*p) = ((2*b)-1) * sinus
 
 Donde (2*b-1) es una funcion que devuelve 1 cuando b es 1 y devuelve -1 cuando b es cero. De esta manera, la senal va a ser seno cuando llega un 1, y va a ser
 -seno cuando llega un 0.
@@ -46,18 +46,18 @@ Y antes del ruido se veia de la siguiente forma:
 
 Se realizo una decodificacion de la senal por deteccion de energia con un umbral del 50% de la energia de la senal sin ruido ya que asi se realizo en clase:
 
-  Es = np.sum(sinus**2)
-  for k, b in enumerate(bits):
-    Ep = np.sum(Rx(k*p:(k+1)*p) * sinus) 
-    if Ep > Es/2:
-      bitsRx(k) = 1
-    else:
-      bitsRx(k) = 0
+Es = np.sum(sinus**2)
+for k, b in enumerate(bits):
+Ep = np.sum(Rx(k*p:(k+1)*p) * sinus) 
+if Ep > Es/2:
+  bitsRx(k) = 1
+else:
+bitsRx(k) = 0
 
 Este proceso se repitio para cada valor en dB del ruido aplicadoy en cada caso se calculo y se guardo los valores de BER:
 
-  err = np.sum(np.abs(bits - bitsRx))
-  BER(l) = err/N
+err = np.sum(np.abs(bits - bitsRx))
+BER(l) = err/N
 
 * Punto 6:
 
